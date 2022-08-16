@@ -1,0 +1,63 @@
+*,
+*::before,
+*::after {
+  /* Grabs alll the elements */
+
+  box-sizing: border-box;
+  font-family: Helvetica;
+  font-weight: normal;
+}
+
+body {
+  padding: 0;
+  margin: 0; /* padding and margin equal 0 in order to fill entire screen */
+  background: linear-gradient(to right, rgb(71, 71, 176), rgb(14, 139, 104));
+}
+
+.calculator-grid {
+  /* class that wraps all of the buttons and elements */
+  display: grid; /* Grid items are placed in rows by default and span the full width of the grid container. */
+  justify-content: center;
+  align-content: center; /* Using 'content because we want the entire content centered, not items */
+  min-height: 100vh; /* Will fill 100% of the height all the time */
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem; /* rem = root element (standard in html is 16. So, 2 * 16 = 32px */
+  border-radius: 1px solid white;
+  border-color: whitesmoke;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.output {
+  grid-column: 1 / -1; /* Creates the top portion of the calculator */
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: flex-end; /* Pushes items to the right side of output (top portion) */
+  justify-content: space-around; /* Will put space between the elenents as poss */
+  flex-direction: column; /* Makes numbers align vertically instead of horizontally */
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all; /* Allows numbers to continue being pressed */
+}
+
+.output .previous-operand {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+}
+.output .current-operand {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 2.5rem;
+}
