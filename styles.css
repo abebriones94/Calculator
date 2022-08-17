@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: Helvetica;
   font-weight: normal;
+  border-radius: 1.5px;
 }
 
 body {
@@ -54,10 +55,10 @@ body {
 }
 
 .output .previous-operand {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgb(255, 255, 255);
   font-size: 1.5rem;
 }
 .output .current-operand {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgb(255, 255, 255);
   font-size: 2.5rem;
 }

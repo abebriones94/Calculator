@@ -15,7 +15,7 @@ class Calculator {
   }
 
   delete() {
-    this.currentOperand = this.currentOperand.toString().slice(0, -1); // Get last value of string and chop it off
+    this.currentOperand = this.currentOperand.toString().slice(0, -1); // Get last value of string and chop it off. From index 0 to the second to last one. 
   }
 
   appendNumber(number) {
@@ -61,10 +61,19 @@ class Calculator {
     this.previousOperand = "";
   }
 
+  getDisplayNumber(number) {  
+    // This function will return number but return it as a display value
+    return number; // Any changes made to this function will be reflected in previous and current operand 
+  }
+
   updateDisplay() {
-    this.currentOperandTextElement.innerText = this.currentOperand;
+    this.currentOperandTextElement.innerText = this.getDisplayNumber(
+      this.currentOperand
+    );
     if (this.operation != null) {
-      this.previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`;
+      this.previousOperandTextElement.innerText = `${this.getDisplayNumber(
+        this.previousOperand
+      )} ${this.operation}`;
       // Previous operand gets moved to the top of output
     }
   }
@@ -88,7 +97,7 @@ const calculator = new Calculator(
   currentOperandTextElement
 );
 
-// Buttons ----------------------------------------------------------------
+// Buttons & Event Listeners  --------------------------------------------------------------------->>> 
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -105,7 +114,7 @@ operationButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener("click", (button) => {
-  calculator.compute();
+  calculator.compute(); // Call compute function on our calculator 
   calculator.updateDisplay();
 });
 
@@ -118,3 +127,5 @@ deleteButton.addEventListener("click", (button) => {
   calculator.delete();
   calculator.updateDisplay();
 });
+
+
